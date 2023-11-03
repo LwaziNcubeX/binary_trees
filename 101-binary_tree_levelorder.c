@@ -43,20 +43,19 @@ size_t binary_tree_height(const binary_tree_t *tree)
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
+	binary_tree_t **array = calloc(binary_tree_height(tree) + 1,
+			sizeof(*array));
+	int front = 0, rear = 0;
+
 	if (tree == NULL || func == NULL)
 	{
 		return;
 	}
 
-	binary_tree_t **array = calloc(binary_tree_height(tree) + 1,
-			sizeof(*array));
-
 	if (array == NULL)
 	{
 		return;
 	}
-
-	int front = 0, rear = 0;
 
 	array[rear] = (binary_tree_t *)tree;
 
